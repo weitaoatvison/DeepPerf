@@ -1,0 +1,15 @@
+
+	code for sm_35
+		Function : bench
+	.headerflags    @"EF_CUDA_SM35 EF_CUDA_PTX_SM(EF_CUDA_SM35)"
+                                                          /* 0x08000000b810c4bc */
+        /*0008*/                   MOV R1, c[0x0][0x44];  /* 0x64c03c00089c0006 */
+        /*0010*/                   MEMBAR.CTA;            /* 0x7cc00000001c0002 */
+        /*0018*/                   MOV RZ, RZ;            /* 0xe4c03c007f9c03fe */
+        /*0020*/                   EXIT;                  /* 0x18000000001c003c */
+        /*0028*/                   BRA 0x28;              /* 0x12007ffffc1c003c */
+        /*0030*/                   NOP;                   /* 0x85800000001c3c02 */
+        /*0038*/                   NOP;                   /* 0x85800000001c3c02 */
+		......................
+
+

@@ -1,0 +1,10 @@
+.version 5.0
+.target sm_60
+.entry bench(.param .u64 I){
+    .reg .b64   ptr;
+    .reg .b32   r32i<1>;
+    ld.param.u64 ptr, [I];
+    cvta.to.global.u64  ptr, ptr;
+    ldu.global.b32 r32i0, [ptr+0];
+    st.local.cg.s32 [ptr], r32i0;
+}

@@ -1,0 +1,13 @@
+.version 4.1
+.target sm_35
+.entry bench(.param .u64 I){
+    .reg .b64   ptr;
+    .reg .pred  pi<2>;
+    .reg .pred  po<1>;
+    ld.param.u64 ptr, [I];
+    cvta.to.global.u64  ptr, ptr;
+    setp.ne.u64     pi0, ptr, 0;
+    setp.ne.u64     pi1, ptr, 1;
+    and.pred po0, pi0, pi1;
+    @po0 st.global.b8 [ptr+0], 0;
+}

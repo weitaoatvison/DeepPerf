@@ -1,0 +1,4 @@
+.......................................................................
+ argv[1]: disasssembly file;
+ argv[2]: arch: SM21|SM35|Maxwell|Kepler|SM52 
+0

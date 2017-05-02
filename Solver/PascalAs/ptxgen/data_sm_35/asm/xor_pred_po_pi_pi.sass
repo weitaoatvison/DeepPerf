@@ -1,0 +1,23 @@
+
+	code for sm_35
+		Function : bench
+	.headerflags    @"EF_CUDA_SM35 EF_CUDA_PTX_SM(EF_CUDA_SM35)"
+                                                                           /* 0x08b0b080b0a01000 */
+        /*0008*/                   MOV R1, c[0x0][0x44];                   /* 0x64c03c00089c0006 */
+        /*0010*/                   MOV R2, c[0x0][0x140];                  /* 0x64c03c00281c000a */
+        /*0018*/                   MOV R0, c[0x0][0x144];                  /* 0x64c03c00289c0002 */
+        /*0020*/                   ISUB RZ.CC, R2, 0x1;                    /* 0xc08c0000009c0bfd */
+        /*0028*/                   ISETP.NE.U32.X.AND P0, PT, R0, RZ, PT;  /* 0xdb505c007f9c001e */
+        /*0030*/                   ISUB RZ.CC, c[0x0][0x140], RZ;          /* 0x60940000281ffffe */
+        /*0038*/                   ISETP.NE.U32.X.XOR P0, PT, R0, RZ, P0;  /* 0xdb5240007f9c001e */
+                                                                           /* 0x0800b81000a01000 */
+        /*0048*/              @!P0 BRA.U 0x68;                             /* 0x120000000c20023c */
+        /*0050*/               @P0 MOV R2, c[0x0][0x140];                  /* 0x64c03c002800000a */
+        /*0058*/               @P0 MOV R3, c[0x0][0x144];                  /* 0x64c03c002880000e */
+        /*0060*/               @P0 ST.E.U8 [R2], RZ;                       /* 0xe080000000000bfc */
+        /*0068*/                   MOV RZ, RZ;                             /* 0xe4c03c007f9c03fe */
+        /*0070*/                   EXIT;                                   /* 0x18000000001c003c */
+        /*0078*/                   BRA 0x78;                               /* 0x12007ffffc1c003c */
+		......................
+
+

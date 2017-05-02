@@ -1,0 +1,8 @@
+.version 5.0
+.target sm_60
+.entry bench(.param .u64 I){
+    .reg .b64   ptr;
+    ld.param.u64 ptr, [I];
+    cvta.to.global.u64  ptr, ptr;
+    membar.sys;
+}

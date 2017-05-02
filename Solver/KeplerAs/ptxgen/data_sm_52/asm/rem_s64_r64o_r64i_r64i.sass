@@ -1,0 +1,279 @@
+
+	code for sm_52
+		Function : bench
+	.headerflags    @"EF_CUDA_SM52 EF_CUDA_PTX_SM(EF_CUDA_SM52)"
+                                                                                              /* 0x001fc800fe2007f6 */
+        /*0008*/                   MOV R1, c[0x0][0x20];                                      /* 0x4c98078000870001 */
+        /*0010*/                   MOV R4, c[0x0][0x140];                                     /* 0x4c98078005070004 */
+        /*0018*/                   MOV R5, c[0x0][0x144];                                     /* 0x4c98078005170005 */
+                                                                                              /* 0x011fd80016200071 */
+        /*0028*/                   LDG.E.64 R6, [R4+0x8];                                     /* 0xeed5200000870406 */
+        /*0030*/                   LDG.E.64 R2, [R4];                                         /* 0xeed5200000070402 */
+        /*0038*/                   MOV R0, R6;                                                /* 0x5c98078000670000 */
+                                                                                              /* 0x001fc800fe210ffd */
+        /*0048*/                   CAL 0x78;                                                  /* 0xe260000002800040 */
+        /*0050*/                   MOV R4, c[0x0][0x140];                                     /* 0x4c98078005070004 */
+        /*0058*/                   MOV R5, c[0x0][0x144];                                     /* 0x4c98078005170005 */
+                                                                                              /* 0x101fc400ffe000f1 */
+        /*0068*/                   STG.E.64 [R4], R2;                                         /* 0xeedd200000070402 */
+        /*0070*/                   EXIT;                                                      /* 0xe30000000007000f */
+        /*0078*/                   IADD R5.CC, RZ, -R0.reuse;                                 /* 0x5c1180000007ff05 */
+                                                                                              /* 0x001fd500fe2407f5 */
+        /*0088*/                   LOP.PASS_B R4, RZ, ~R7.reuse;                              /* 0x5c4707000077ff04 */
+        /*0090*/                   ICMP.LT R6, R5, R0, R7.reuse;                              /* 0x5b43038000070506 */
+        /*0098*/                   IADD.X R4, RZ, R4;                                         /* 0x5c1008000047ff04 */
+                                                                                              /* 0x0000fc00fc8007f1 */
+        /*00a8*/                   MOV R8, R6;                                                /* 0x5c98078000670008 */
+        /*00b0*/                   ICMP.LT R9, R4, R7, R7;                                    /* 0x5b43038000770409 */
+        /*00b8*/                   I2F.F32.U64.RP R8, R8;                                     /* 0x5cb8010000870e08 */
+                                                                                              /* 0x001c7c02ffe0103d */
+        /*00c8*/                   MUFU.RCP R4, R8;                                           /* 0x5080000000470804 */
+        /*00d0*/                   IADD32I R4, R4, 0x1ffffffe;                                /* 0x1c01ffffffe70404 */
+        /*00d8*/                   F2I.U64.F32.TRUNC R4, R4;                                  /* 0x5cb0018000470b04 */
+                                                                                              /* 0x181fd0c0fe260ff1 */
+        /*00e8*/                   XMAD R13, R4.reuse, R6.reuse, RZ;                          /* 0x5b007f800067040d */
+        /*00f0*/                   XMAD R10, R4.reuse, R6.H1.reuse, RZ;                       /* 0x5b007f880067040a */
+        /*00f8*/                   XMAD R11, R4.H1.reuse, R6.H1.reuse, RZ;                    /* 0x5b207f880067040b */
+                                                                                              /* 0x001f9400fe2207f6 */
+        /*0108*/                   XMAD.CHI R12, R4.H1.reuse, R6, R13;                        /* 0x5b2806800067040c */
+        /*0110*/                   IADD3.RS R10, R12, R10, R11;                               /* 0x5cc005a000a70c0a */
+        /*0118*/                   XMAD.MRG R11, R4, R9.H1, RZ;                               /* 0x5b007fa80097040b */
+                                                                                              /* 0x181fc440fe2207f6 */
+        /*0128*/                   XMAD R10, R4.reuse, R9, R10;                               /* 0x5b0005000097040a */
+        /*0130*/                   XMAD.PSL.CBCC R11, R4.H1.reuse, R11.H1, R10;               /* 0x5b30051800b7040b */
+        /*0138*/                   XMAD.MRG R10, R4.reuse, R6.H1.reuse, RZ;                   /* 0x5b007fa80067040a */
+                                                                                              /* 0x001f9400fe2607f4 */
+        /*0148*/                   XMAD.MRG R14, R5.reuse, R6.H1.reuse, RZ;                   /* 0x5b007fa80067050e */
+        /*0150*/                   XMAD R11, R5, R6, R11;                                     /* 0x5b0005800067050b */
+        /*0158*/                   XMAD.PSL.CBCC R8, R4.H1, R10.H1, R13;                      /* 0x5b30069800a70408 */
+                                                                                              /* 0x001fc400fea007f1 */
+        /*0168*/                   XMAD.PSL.CBCC R10, R5.H1, R14.H1, R11;                     /* 0x5b30059800e7050a */
+        /*0170*/                   IADD R11.CC, RZ, -R8;                                      /* 0x5c1180000087ff0b */
+        /*0178*/                   LOP.PASS_B R8, RZ, ~R10;                                   /* 0x5c47070000a7ff08 */
+                                                                                              /* 0x001f8400fe2607f5 */
+        /*0188*/                   XMAD R13, R4.reuse, R11.reuse, RZ;                         /* 0x5b007f8000b7040d */
+        /*0190*/                   IADD.X R10, RZ, R8;                                        /* 0x5c1008000087ff0a */
+        /*0198*/                   XMAD R8, R4, R11.H1, RZ;                                   /* 0x5b007f8800b70408 */
+                                                                                              /* 0x181fc440fe6607f1 */
+        /*01a8*/                   XMAD R14, R4.H1.reuse, R11.H1.reuse, RZ;                   /* 0x5b207f8800b7040e */
+        /*01b0*/                   XMAD.CHI R13, R4.H1.reuse, R11, R13;                       /* 0x5b28068000b7040d */
+        /*01b8*/                   XMAD R15, R4.reuse, R10.reuse, RZ;                         /* 0x5b007f8000a7040f */
+                                                                                              /* 0x001f8400fe2607f1 */
+        /*01c8*/                   XMAD.MRG R17, R4.reuse, R10.H1.reuse, RZ;                  /* 0x5b007fa800a70411 */
+        /*01d0*/                   XMAD R12, R4, R10.H1, RZ;                                  /* 0x5b007f8800a7040c */
+        /*01d8*/                   IADD3.RS R8, R13, R8, R14;                                 /* 0x5cc0072000870d08 */
+                                                                                              /* 0x381fc4c0fe2607f1 */
+        /*01e8*/                   XMAD R13, R5.reuse, R10.reuse, RZ;                         /* 0x5b007f8000a7050d */
+        /*01f0*/                   XMAD R18, R4.H1.reuse, R10.H1.reuse, RZ;                   /* 0x5b207f8800a70412 */
+        /*01f8*/                   XMAD.CHI R19, R4.H1.reuse, R10.reuse, R15.reuse;           /* 0x5b28078000a70413 */
+                                                                                              /* 0x001f8440fe2007f1 */
+        /*0208*/                   XMAD.PSL.CBCC R14, R4.H1, R17.H1, R15;                     /* 0x5b3007980117040e */
+        /*0210*/                   XMAD R21, R5.reuse, R11, RZ;                               /* 0x5b007f8000b70515 */
+        /*0218*/                   XMAD R16, R5, R10.H1, RZ;                                  /* 0x5b007f8800a70510 */
+                                                                                              /* 0x001fc440fe2607f1 */
+        /*0228*/                   XMAD R17, R5.H1.reuse, R10.H1.reuse, RZ;                   /* 0x5b207f8800a70511 */
+        /*0230*/                   XMAD.CHI R22, R5.H1.reuse, R10, R13;                       /* 0x5b28068000a70516 */
+        /*0238*/                   IADD3.RS R15, R19, R12, R18;                               /* 0x5cc0092000c7130f */
+                                                                                              /* 0x001f84c0fe2007f1 */
+        /*0248*/                   IADD R8.CC, R8, R14;                                       /* 0x5c10800000e70808 */
+        /*0250*/                   XMAD.MRG R23, R5.reuse, R11.H1.reuse, RZ;                  /* 0x5b007fa800b70517 */
+        /*0258*/                   XMAD R12, R5, R11.H1, RZ;                                  /* 0x5b007f8800b7050c */
+                                                                                              /* 0x001fc440fe2e07f1 */
+        /*0268*/                   XMAD.CHI R18, R5.H1.reuse, R11.reuse, R21.reuse;           /* 0x5b280a8000b70512 */
+        /*0270*/                   XMAD R11, R5.H1.reuse, R11.H1, RZ;                         /* 0x5b207f8800b7050b */
+        /*0278*/                   IADD3.RS R14, R22, R16, R17;                               /* 0x5cc008a00107160e */
+                                                                                              /* 0x001f8800fe6007f1 */
+        /*0288*/                   IADD.X R4.CC, R4, R15;                                     /* 0x5c10880000f70404 */
+        /*0290*/                   XMAD.PSL.CBCC R17, R5.H1, R23.H1, R21;                     /* 0x5b300a9801770511 */
+        /*0298*/                   IADD3.RS R11, R18, R12, R11;                               /* 0x5cc005a000c7120b */
+                                                                                              /* 0x081fd400fe2207f1 */
+        /*02a8*/                   IADD.X R12, R5.reuse, R14;                                 /* 0x5c10080000e7050c */
+        /*02b0*/                   IADD RZ.CC, R8, R17;                                       /* 0x5c108000011708ff */
+        /*02b8*/                   XMAD.MRG R10, R5.reuse, R10.H1, RZ;                        /* 0x5b007fa800a7050a */
+                                                                                              /* 0x001f8400fea007f1 */
+        /*02c8*/                   IADD.X R4.CC, R4, R11;                                     /* 0x5c10880000b70404 */
+        /*02d0*/                   XMAD.PSL.CBCC R5, R5.H1, R10.H1, R13;                      /* 0x5b30069800a70505 */
+        /*02d8*/                   IADD.X R12, RZ, R12;                                       /* 0x5c10080000c7ff0c */
+                                                                                              /* 0x181fc4c0fe2007f6 */
+        /*02e8*/                   IADD R4.CC, R4, R5;                                        /* 0x5c10800000570404 */
+        /*02f0*/                   XMAD R11, R4.reuse, R6.reuse, RZ;                          /* 0x5b007f800067040b */
+        /*02f8*/                   XMAD R5, R4.reuse, R6.H1.reuse, RZ;                        /* 0x5b007f8800670405 */
+                                                                                              /* 0x001fc400ffa607f4 */
+        /*0308*/                   XMAD R8, R4.H1.reuse, R6.H1.reuse, RZ;                     /* 0x5b207f8800670408 */
+        /*0310*/                   XMAD.CHI R10, R4.H1, R6, R11;                              /* 0x5b2805800067040a */
+        /*0318*/                   IADD3.RS R10, R10, R5, R8;                                 /* 0x5cc0042000570a0a */
+                                                                                              /* 0x001fd440fe2007e5 */
+        /*0328*/                   XMAD.MRG R13, R4, R9.H1, RZ;                               /* 0x5b007fa80097040d */
+        /*0330*/                   XMAD R10, R4.reuse, R9, R10;                               /* 0x5b0005000097040a */
+        /*0338*/                   IADD.X R5, RZ, R12;                                        /* 0x5c10080000c7ff05 */
+                                                                                              /* 0x181fd080fe2207f1 */
+        /*0348*/                   XMAD.PSL.CBCC R8, R4.H1.reuse, R13.H1, R10;                /* 0x5b30051800d70408 */
+        /*0350*/                   XMAD.MRG R10, R4, R6.H1.reuse, RZ;                         /* 0x5b007fa80067040a */
+        /*0358*/                   XMAD.MRG R14, R5.reuse, R6.H1.reuse, RZ;                   /* 0x5b007fa80067050e */
+                                                                                              /* 0x001fc440fea007e1 */
+        /*0368*/                   XMAD R8, R5, R6, R8;                                       /* 0x5b00040000670508 */
+        /*0370*/                   XMAD.PSL.CBCC R10, R4.H1.reuse, R10.H1, R11;               /* 0x5b30059800a7040a */
+        /*0378*/                   XMAD.PSL.CBCC R8, R5.H1, R14.H1, R8;                       /* 0x5b30041800e70508 */
+                                                                                              /* 0x001fd400fe2007f5 */
+        /*0388*/                   IADD R10.CC, RZ, -R10;                                     /* 0x5c11800000a7ff0a */
+        /*0390*/                   LOP.PASS_B R8, RZ, ~R8;                                    /* 0x5c4707000087ff08 */
+        /*0398*/                   XMAD R13, R4, R10, RZ;                                     /* 0x5b007f8000a7040d */
+                                                                                              /* 0x181fc4c0fe2007e1 */
+        /*03a8*/                   IADD.X R11, RZ, R8;                                        /* 0x5c1008000087ff0b */
+        /*03b0*/                   XMAD R8, R4.reuse, R10.H1.reuse, RZ;                       /* 0x5b007f8800a70408 */
+        /*03b8*/                   XMAD R14, R4.H1.reuse, R10.H1.reuse, RZ;                   /* 0x5b207f8800a7040e */
+                                                                                              /* 0x181fc4c0fe2207f3 */
+        /*03c8*/                   XMAD.CHI R13, R4.H1.reuse, R10, R13;                       /* 0x5b28068000a7040d */
+        /*03d0*/                   XMAD R17, R4.reuse, R11.reuse, RZ;                         /* 0x5b007f8000b70411 */
+        /*03d8*/                   XMAD.MRG R15, R4.reuse, R11.H1.reuse, RZ;                  /* 0x5b007fa800b7040f */
+                                                                                              /* 0x181fc400fe2007e1 */
+        /*03e8*/                   XMAD R16, R4.H1, R11.H1, RZ;                               /* 0x5b207f8800b70410 */
+        /*03f0*/                   IADD3.RS R14, R13, R8, R14;                                /* 0x5cc0072000870d0e */
+        /*03f8*/                   XMAD R13, R4.reuse, R11.H1.reuse, RZ;                      /* 0x5b007f8800b7040d */
+                                                                                              /* 0x001fc540fe2007f1 */
+        /*0408*/                   IADD R8.CC, RZ, -R2;                                       /* 0x5c1180000027ff08 */
+        /*0410*/                   XMAD.CHI R18, R4.H1.reuse, R11, R17.reuse;                 /* 0x5b28088000b70412 */
+        /*0418*/                   LOP.PASS_B R19, RZ, ~R3;                                   /* 0x5c4707000037ff13 */
+                                                                                              /* 0x001fc4c0fe6007e1 */
+        /*0428*/                   XMAD.PSL.CBCC R15, R4.H1, R15.H1, R17;                     /* 0x5b30089800f7040f */
+        /*0430*/                   XMAD R12, R5.reuse, R11.reuse, RZ;                         /* 0x5b007f8000b7050c */
+        /*0438*/                   IADD3.RS R17, R18, R13, R16;                               /* 0x5cc0082000d71211 */
+                                                                                              /* 0x181fc400fe2007f1 */
+        /*0448*/                   IADD.X R13, RZ, R19;                                       /* 0x5c1008000137ff0d */
+        /*0450*/                   IADD R14.CC, R14, R15;                                     /* 0x5c10800000f70e0e */
+        /*0458*/                   XMAD R15, R5.reuse, R11.H1.reuse, RZ;                      /* 0x5b007f8800b7050f */
+                                                                                              /* 0x181fc440fe2007e1 */
+        /*0468*/                   XMAD R16, R5.H1, R11.H1, RZ;                               /* 0x5b207f8800b70510 */
+        /*0470*/                   XMAD.CHI R18, R5.H1.reuse, R11, R12;                       /* 0x5b28060000b70512 */
+        /*0478*/                   XMAD R19, R5.reuse, R10.reuse, RZ;                         /* 0x5b007f8000a70513 */
+                                                                                              /* 0x001fc800fe2607f1 */
+        /*0488*/                   XMAD.MRG R20, R5.reuse, R10.H1.reuse, RZ;                  /* 0x5b007fa800a70514 */
+        /*0490*/                   IADD.X R4.CC, R4, R17;                                     /* 0x5c10880001170404 */
+        /*0498*/                   XMAD R17, R5, R10.H1, RZ;                                  /* 0x5b007f8800a70511 */
+                                                                                              /* 0x281fc4c0fe2007e1 */
+        /*04a8*/                   IADD3.RS R15, R18, R15, R16;                               /* 0x5cc0082000f7120f */
+        /*04b0*/                   XMAD R18, R5.H1.reuse, R10.H1.reuse, RZ;                   /* 0x5b207f8800a70512 */
+        /*04b8*/                   XMAD.CHI R23, R5.H1.reuse, R10, R19.reuse;                 /* 0x5b28098000a70517 */
+                                                                                              /* 0x001fc840fe4207f1 */
+        /*04c8*/                   XMAD.PSL.CBCC R16, R5.H1.reuse, R20.H1, R19;               /* 0x5b30099801470510 */
+        /*04d0*/                   XMAD.MRG R11, R5.reuse, R11.H1, RZ;                        /* 0x5b007fa800b7050b */
+        /*04d8*/                   IADD.X R15, R5, R15;                                       /* 0x5c10080000f7050f */
+                                                                                              /* 0x001fd400fe2007e1 */
+        /*04e8*/                   IADD3.RS R10, R23, R17, R18;                               /* 0x5cc009200117170a */
+        /*04f0*/                   IADD RZ.CC, R14, R16;                                      /* 0x5c10800001070eff */
+        /*04f8*/                   XMAD.PSL.CBCC R5, R5.H1, R11.H1, R12;                      /* 0x5b30061800b70505 */
+                                                                                              /* 0x001fc400fea007f1 */
+        /*0508*/                   IADD.X R4.CC, R4, R10;                                     /* 0x5c10880000a70404 */
+        /*0510*/                   ICMP.LT R2, R8, R2, R3;                                    /* 0x5b43018000270802 */
+        /*0518*/                   IADD.X R10, RZ, R15;                                       /* 0x5c10080000f7ff0a */
+                                                                                              /* 0x181fc400fea007e1 */
+        /*0528*/                   IADD R11.CC, R4, R5;                                       /* 0x5c1080000057040b */
+        /*0530*/                   ICMP.LT R4, R13, R3, R3;                                   /* 0x5b43018000370d04 */
+        /*0538*/                   XMAD R8, R11.reuse, R2.reuse, RZ;                          /* 0x5b007f8000270b08 */
+                                                                                              /* 0x181fc400fe2207f1 */
+        /*0548*/                   XMAD R14, R11.reuse, R4, RZ;                               /* 0x5b007f8000470b0e */
+        /*0550*/                   IADD.X R5, RZ, R10;                                        /* 0x5c10080000a7ff05 */
+        /*0558*/                   XMAD R10, R11.reuse, R2.H1.reuse, RZ;                      /* 0x5b007f8800270b0a */
+                                                                                              /* 0x181fc4c0fe2007e1 */
+        /*0568*/                   XMAD R12, R11.H1, R2.H1, RZ;                               /* 0x5b207f8800270b0c */
+        /*0570*/                   XMAD.MRG R16, R11.reuse, R4.H1.reuse, RZ;                  /* 0x5b007fa800470b10 */
+        /*0578*/                   XMAD.CHI R13, R11.H1.reuse, R2.reuse, R8;                  /* 0x5b28040000270b0d */
+                                                                                              /* 0x001fc4c0fe2607f1 */
+        /*0588*/                   XMAD R15, R11.reuse, R4.H1.reuse, RZ;                      /* 0x5b007f8800470b0f */
+        /*0590*/                   XMAD R17, R11.H1.reuse, R4.H1.reuse, RZ;                   /* 0x5b207f8800470b11 */
+        /*0598*/                   XMAD.CHI R18, R11.H1, R4, R14;                             /* 0x5b28070000470b12 */
+                                                                                              /* 0x001fc400fe2007e1 */
+        /*05a8*/                   XMAD R19, R5, R2, RZ;                                      /* 0x5b007f8000270513 */
+        /*05b0*/                   XMAD.PSL.CBCC R11, R11.H1, R16.H1, R14;                    /* 0x5b30071801070b0b */
+        /*05b8*/                   IADD3.RS R8, R13, R10, R12;                                /* 0x5cc0062000a70d08 */
+                                                                                              /* 0x001fc4c0fe2607f1 */
+        /*05c8*/                   XMAD.MRG R20, R5.reuse, R2.H1.reuse, RZ;                   /* 0x5b007fa800270514 */
+        /*05d0*/                   XMAD R10, R5.reuse, R2.H1.reuse, RZ;                       /* 0x5b007f880027050a */
+        /*05d8*/                   IADD3.RS R16, R18, R15, R17;                               /* 0x5cc008a000f71210 */
+                                                                                              /* 0x001fc540fe2007e1 */
+        /*05e8*/                   XMAD R12, R5.H1, R2.H1, RZ;                                /* 0x5b207f880027050c */
+        /*05f0*/                   XMAD.CHI R15, R5.H1.reuse, R2, R19.reuse;                  /* 0x5b2809800027050f */
+        /*05f8*/                   IADD R8.CC, R8, R11;                                       /* 0x5c10800000b70808 */
+                                                                                              /* 0x001fc400fe6207f1 */
+        /*0608*/                   XMAD.PSL.CBCC R13, R5.H1.reuse, R20.H1, R19;               /* 0x5b3009980147050d */
+        /*0610*/                   XMAD R14, R5, R4, RZ;                                      /* 0x5b007f800047050e */
+        /*0618*/                   IADD3.RS R11, R15, R10, R12;                               /* 0x5cc0062000a70f0b */
+                                                                                              /* 0x181fc400fe2007e1 */
+        /*0628*/                   IADD.X R10, RZ, R16;                                       /* 0x5c1008000107ff0a */
+        /*0630*/                   IADD RZ.CC, R8, R13;                                       /* 0x5c10800000d708ff */
+        /*0638*/                   XMAD R8, R5.reuse, R4.H1.reuse, RZ;                        /* 0x5b007f8800470508 */
+                                                                                              /* 0x001fd4c0fe2607f1 */
+        /*0648*/                   XMAD R13, R5.H1.reuse, R4.H1.reuse, RZ;                    /* 0x5b207f880047050d */
+        /*0650*/                   XMAD.CHI R15, R5.H1.reuse, R4.reuse, R14;                  /* 0x5b2807000047050f */
+        /*0658*/                   XMAD.MRG R12, R5, R4.H1, RZ;                               /* 0x5b007fa80047050c */
+                                                                                              /* 0x001fd400fe2007e1 */
+        /*0668*/                   IADD3.RS R13, R15, R8, R13;                                /* 0x5cc006a000870f0d */
+        /*0670*/                   IADD.X R8.CC, R10, R11;                                    /* 0x5c10880000b70a08 */
+        /*0678*/                   XMAD.PSL.CBCC R5, R5.H1, R12.H1, R14;                      /* 0x5b30071800c70505 */
+                                                                                              /* 0x181fc400fec007f1 */
+        /*0688*/                   IADD.X R12, RZ, R13;                                       /* 0x5c10080000d7ff0c */
+        /*0690*/                   IADD R8.CC, R8, R5;                                        /* 0x5c10800000570808 */
+        /*0698*/                   XMAD R13, R8.reuse, R6.reuse, RZ;                          /* 0x5b007f800067080d */
+                                                                                              /* 0x001ff4c0fe8007e1 */
+        /*06a8*/                   XMAD R5, R8, R6.H1, RZ;                                    /* 0x5b007f8800670805 */
+        /*06b0*/                   XMAD R10, R8.H1.reuse, R6.H1.reuse, RZ;                    /* 0x5b207f880067080a */
+        /*06b8*/                   XMAD.CHI R11, R8.H1, R6, R13;                              /* 0x5b2806800067080b */
+                                                                                              /* 0x081fc4c0fea007f1 */
+        /*06c8*/                   IADD3.RS R10, R11, R5, R10;                                /* 0x5cc0052000570b0a */
+        /*06d0*/                   XMAD.MRG R11, R8.reuse, R9.H1.reuse, RZ;                   /* 0x5b007fa80097080b */
+        /*06d8*/                   XMAD R10, R8.reuse, R9, R10;                               /* 0x5b0005000097080a */
+                                                                                              /* 0x181fc400fc2007f5 */
+        /*06e8*/                   IADD.X R5, RZ, R12;                                        /* 0x5c10080000c7ff05 */
+        /*06f0*/                   XMAD.PSL.CBCC R11, R8.H1, R11.H1, R10;                     /* 0x5b30051800b7080b */
+        /*06f8*/                   XMAD.MRG R10, R8.reuse, R6.H1.reuse, RZ;                   /* 0x5b007fa80067080a */
+                                                                                              /* 0x001fd440fe2607f4 */
+        /*0708*/                   XMAD.MRG R12, R5.reuse, R6.H1.reuse, RZ;                   /* 0x5b007fa80067050c */
+        /*0710*/                   XMAD R11, R5.reuse, R6, R11;                               /* 0x5b0005800067050b */
+        /*0718*/                   XMAD.PSL.CBCC R8, R8.H1, R10.H1, R13;                      /* 0x5b30069800a70808 */
+                                                                                              /* 0x001fd800fca007f1 */
+        /*0728*/                   XMAD.PSL.CBCC R10, R5.H1, R12.H1, R11;                     /* 0x5b30059800c7050a */
+        /*0730*/                   IADD R5.CC, -R8, R2;                                       /* 0x5c12800000270805 */
+        /*0738*/                   LOP.PASS_B R2, RZ, ~R10;                                   /* 0x5c47070000a7ff02 */
+                                                                                              /* 0x101fc4c0fec007f1 */
+        /*0748*/                   IADD.X R10, R4, R2;                                        /* 0x5c1008000027040a */
+        /*0750*/                   IADD RZ.CC, R5.reuse, -R6.reuse;                           /* 0x5c118000006705ff */
+        /*0758*/                   ISETP.GE.U32.X.AND P0, PT, R10, R9.reuse, PT;              /* 0x5b6c0b8000970a07 */
+                                                                                              /* 0x001fd400fcc007f1 */
+        /*0768*/                   LOP.PASS_B R8, RZ, ~R9;                                    /* 0x5c4707000097ff08 */
+        /*0770*/                   IADD R2.CC, R5, -R6;                                       /* 0x5c11800000670502 */
+        /*0778*/                   IADD.X R4, R10, R8;                                        /* 0x5c10080000870a04 */
+                                                                                              /* 0x181fd800fea007f1 */
+        /*0788*/                   SEL R5, R2, R5, P0;                                        /* 0x5ca0000000570205 */
+        /*0790*/                   SEL R10, R4, R10, P0;                                      /* 0x5ca0000000a7040a */
+        /*0798*/                   IADD RZ.CC, R5.reuse, -R6.reuse;                           /* 0x5c118000006705ff */
+                                                                                              /* 0x001fd400fc2007f1 */
+        /*07a8*/                   ISETP.GE.U32.X.AND P0, PT, R10, R9, PT;                    /* 0x5b6c0b8000970a07 */
+        /*07b0*/                   IADD R2.CC, R5, -R6;                                       /* 0x5c11800000670502 */
+        /*07b8*/                   MOV R6, RZ;                                                /* 0x5c9807800ff70006 */
+                                                                                              /* 0x001fc400fea007f1 */
+        /*07c8*/                   IADD.X R4, R10, R8;                                        /* 0x5c10080000870a04 */
+        /*07d0*/                   IADD RZ.CC, R0, -R6;                                       /* 0x5c118000006700ff */
+        /*07d8*/                   SEL R0, R2, R5, P0;                                        /* 0x5ca0000000570200 */
+                                                                                              /* 0x101fc400fc8007f1 */
+        /*07e8*/                   SEL R2, R4, R10, P0;                                       /* 0x5ca0000000a70402 */
+        /*07f0*/                   ISETP.EQ.X.AND P0, PT, R7, RZ, PT;                         /* 0x5b650b800ff70707 */
+        /*07f8*/                   IADD R5.CC, RZ, -R0.reuse;                                 /* 0x5c1180000007ff05 */
+                                                                                              /* 0x201fd400fe2407f6 */
+        /*0808*/                   LOP.PASS_B R4, RZ, ~R2.reuse;                              /* 0x5c4707000027ff04 */
+        /*0810*/                   IADD.X R4, RZ, R4;                                         /* 0x5c1008000047ff04 */
+        /*0818*/                   ICMP.LT R0, R5, R0, R3.reuse;                              /* 0x5b43018000070500 */
+                                                                                              /* 0x001fc000ffa007f1 */
+        /*0828*/                   ICMP.LT R3, R4, R2, R3;                                    /* 0x5b43018000270403 */
+        /*0830*/                   SEL R2, R0, -0x1, !P0;                                     /* 0x39a0047ffff70002 */
+        /*0838*/         {         SEL R3, R3, -0x1, !P0;                                     /* 0x39a0047ffff70303 */
+        /*0848*/                   RET;        }                                              /* 0x001f8000ffe007ff */
+                                                                                              /* 0xe32000000007000f */
+        /*0850*/                   BRA 0x850;                                                 /* 0xe2400fffff87000f */
+        /*0858*/                   NOP;                                                       /* 0x50b0000000070f00 */
+                                                                                              /* 0x001f8000fc0007e0 */
+        /*0868*/                   NOP;                                                       /* 0x50b0000000070f00 */
+        /*0870*/                   NOP;                                                       /* 0x50b0000000070f00 */
+        /*0878*/                   NOP;                                                       /* 0x50b0000000070f00 */
+		......................
+
+
